@@ -1,0 +1,32 @@
+﻿<Window x:Class="SalesTax.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesTax"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" >
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />			
+		</Grid.ColumnDefinitions>
+        <TextBox Name="txtAmount" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="5" MaxLength="5" MinWidth="50" Width="75"/>
+        <Label  Name="lblSalesAmount" Content="Enter Sales Amount" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="5"/>
+        <Button Name="btnCalculate" Content="Calculate" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="btnCalculate_Click"/>
+        <CheckBox Name="chkCountyTax" Content="Include County Tax" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Center"/>
+        <ListBox Name="lstTotal"  Grid.ColumnSpan="2" Margin="5" Grid.Row="2" >
+            <ListBoxItem x:Name="lbiSalesAmount" Content="Sales Amount:"/>
+            <ListBoxItem x:Name="lbiStateTax" Content="State Tax:"/>
+            <ListBoxItem x:Name="lbiCountyTax" Content="County Tax:"/>
+            <ListBoxItem x:Name="lbiSalesTotal" Content="Total of Sales Tax:"/>
+            <ListBoxItem x:Name="lbiTotalAmount" Content="Total Amount:"/>
+        </ListBox>
+
+    </Grid>
+</Window>
