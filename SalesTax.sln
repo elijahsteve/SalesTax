@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTax", "SalesTax\SalesTax.csproj", "{FE2FE524-E30C-4D9B-B65B-123AB182F8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxTest", "SalesTaxTest\SalesTaxTest.csproj", "{E2EA4749-D855-472D-8297-DD940B8E6AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesTaxTest", "SalesTaxTest\SalesTaxTest.csproj", "{E2EA4749-D855-472D-8297-DD940B8E6AB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUITest", "GUITest\GUITest.csproj", "{3E833F1C-9015-4C58-9B85-DE04F03BFE4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E2EA4749-D855-472D-8297-DD940B8E6AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2EA4749-D855-472D-8297-DD940B8E6AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2EA4749-D855-472D-8297-DD940B8E6AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E833F1C-9015-4C58-9B85-DE04F03BFE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E833F1C-9015-4C58-9B85-DE04F03BFE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E833F1C-9015-4C58-9B85-DE04F03BFE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E833F1C-9015-4C58-9B85-DE04F03BFE4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

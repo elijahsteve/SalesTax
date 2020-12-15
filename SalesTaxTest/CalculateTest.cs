@@ -15,7 +15,7 @@ namespace SalesTaxTest
         const double COUNTYTAXRATE = 0.02d;
 
         [TestMethod]
-        public void HappyTotal()
+        public void HappyTotalChecked()
         {
             // variables
             var amount = 100;
@@ -25,6 +25,24 @@ namespace SalesTaxTest
             var testString = $"{expected} should be equal to {amount} * {1 + STATETAXRATE + COUNTYTAXRATE}";
             // result
             var result = GetTotal(amount, countyTax);
+            // error message
+            result.Should().Be(expected, because: testString);
+        }
+
+        [TestMethod]
+        public void HappyTotalUnChecked()
+        {
+            // variables
+            var amount = 100;
+            var countyTax = false;
+            var expected = 104d;
+
+            // test string
+            var testString = $"{expected} should be equal to {amount} * {1 + STATETAXRATE}";
+
+            // result
+            var result = GetTotal(amount, countyTax);
+
             // error message
             result.Should().Be(expected, because: testString);
         }
@@ -58,15 +76,31 @@ namespace SalesTaxTest
         }
 
         [TestMethod]
-        public void HappySalesTax()
+        public void HappySalesTaxChecked()
         {
             // variables
-            var amount = 100;            
-            var expected = 106d;
+            var amount = 100;
+            var countyTax = true;
+            var expected = 6d;
             // test string
-            var testString = $"{expected} should be equal to {amount} * {1 + STATETAXRATE + COUNTYTAXRATE}";
+            var testString = $"{expected} should be equal to {amount} * {STATETAXRATE + COUNTYTAXRATE}";
             // result
-            var result = GetTotal(amount, countyTax);
+            var result = GetTotalSalesTax(amount, countyTax);
+            // error message
+            result.Should().Be(expected, because: testString);
+        }
+
+        [TestMethod]
+        public void HappySalesTaxUnChecked()
+        {
+            // variables
+            var amount = 100;
+            var countyTax = false;
+            var expected = 4d;
+            // test string
+            var testString = $"{expected} should be equal to {amount} * {STATETAXRATE}";
+            // result
+            var result = GetTotalSalesTax(amount, countyTax);
             // error message
             result.Should().Be(expected, because: testString);
         }
