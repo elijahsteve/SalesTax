@@ -7,25 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" >
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-		<Grid.RowDefinitions>
-			<RowDefinition />
-			<RowDefinition />
-			<RowDefinition />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />			
-		</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <TextBox Name="txtAmount" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="5" MaxLength="5" MinWidth="50" Width="75"/>
         <Label  Name="lblSalesAmount" Content="Enter Sales Amount" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="5"/>
         <Button Name="btnCalculate" Content="Calculate" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="btnCalculate_Click"/>
         <CheckBox Name="chkCountyTax" Content="Include County Tax" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Center"/>
-        <ListBox Name="lstTotal"  Grid.ColumnSpan="2" Margin="5" Grid.Row="2" >
-            <ListBoxItem x:Name="lbiSalesAmount" Content="Sales Amount:"/>
-            <ListBoxItem x:Name="lbiStateTax" Content="State Tax:"/>
-            <ListBoxItem x:Name="lbiCountyTax" Content="County Tax:"/>
-            <ListBoxItem x:Name="lbiSalesTotal" Content="Total of Sales Tax:"/>
-            <ListBoxItem x:Name="lbiTotalAmount" Content="Total Amount:"/>
+        <ListBox Name="lstTotal"  Grid.ColumnSpan="2" Margin="5,0,4.8,4.8" Grid.Row="2" Height="99" VerticalAlignment="Bottom" >
+            <ListBoxItem x:Name="lbiSalesAmount" Content="Sales Amount: $0.00"/>
+            <ListBoxItem x:Name="lbiStateTax" Content="State Tax: $0.00"/>
+            <ListBoxItem x:Name="lbiCountyTax" Content="County Tax: $0.00"/>
+            <ListBoxItem x:Name="lbiSalesTotal" Content="Total of Sales Tax: $0.00"/>
+            <ListBoxItem x:Name="lbiTotalAmount" Content="Total Amount: $0.00"/>
         </ListBox>
 
     </Grid>
