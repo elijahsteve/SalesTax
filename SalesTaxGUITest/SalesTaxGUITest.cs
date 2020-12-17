@@ -1,12 +1,11 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using FlaUI.UIA3;
 using FlaUI.Core.AutomationElements;
-
+using NUnit.Framework;
 
 namespace GUITest
 {
-    [TestClass]
+    [TestFixture]
     public class SalesTaxGUITest
     {
         //Window Variables
@@ -21,7 +20,7 @@ namespace GUITest
         private ListBoxItem[] lstInitialItems;
         private ListBox lstTotal;
 
-        [ClassInitialize()]
+        [OneTimeSetUp]
         public void Setup()
         {
             app = FlaUI.Core.Application.Launch("SalesTax.exe");
@@ -30,12 +29,12 @@ namespace GUITest
 
             txtAmount = window.FindFirstDescendant(cf => cf.ByAutomationId("txtAmount"))?.AsTextBox();
             chkCountyTax = window.FindFirstDescendant(cf => cf.ByAutomationId("chkCountyTax"))?.AsCheckBox();
-            btnCalculate = window.FindFirstDescendant(cf => cf.ByAutomationId("btnCalculate"))?.AsButton();            
+            btnCalculate = window.FindFirstDescendant(cf => cf.ByAutomationId("btnCalculate"))?.AsButton();
             lstTotal = window.FindFirstDescendant(cf => cf.ByAutomationId("lstTotal"))?.AsListBox();
             lstInitialItems = lstTotal.Items;
         }
 
-        [TestMethod]
+        [Test]
         public void HappyNoCountyTax()
         {
             // Set up test variables
@@ -46,18 +45,20 @@ namespace GUITest
             // Peforms automation tasks/events
             txtAmount.Text = "";
             txtAmount.Enter(input1);
+
+            chkCountyTax.IsChecked = false;
             btnCalculate.Click();
 
             // Pull the result
             var currentItems = lstTotal.Items;
-            var result = currentItems[currentItems.Length - 1];
+            var result = currentItems[currentItems.Length - 1].Name;
 
 
             // Verify result            
             result.Should().Be(expected, because: message);
         }
 
-        [TestMethod]
+        [Test]
         public void HappyCountyTax()
         {
             // Set up test variables
@@ -68,18 +69,18 @@ namespace GUITest
             // Peforms automation tasks/events
             txtAmount.Text = "";
             txtAmount.Enter(input1);
-            chkCountyTax.Click();
+            chkCountyTax.IsChecked = true;
             btnCalculate.Click();
 
             // Pull the result
             var currentItems = lstTotal.Items;
-            var result = currentItems[currentItems.Length - 1];
+            var result = currentItems[currentItems.Length - 1].Name;
 
             // Verify result
             result.Should().Be(expected, because: message);
         }
 
-        [TestMethod]
+        [Test]
         public void SadNoCountyTax()
         {
             // Set up test variables
@@ -93,12 +94,13 @@ namespace GUITest
             // Peforms automation tasks/events
             txtAmount.Text = "";
             txtAmount.Enter(input1);
+            chkCountyTax.IsChecked = false;
             btnCalculate.Click();
 
             // Pull the result
             var currentItems = lstTotal.Items;
 
-            var result = currentItems[currentItems.Length - 1];
+            var result = currentItems[currentItems.Length - 1].Name;
 
             // Verify result
 
@@ -106,7 +108,7 @@ namespace GUITest
             txtAmount.Text.Should().Be(expected2, because: message2);
         }
 
-        [TestMethod]
+        [Test]
         public void SadCountyTax()
         {
             // Set up test variables
@@ -119,12 +121,12 @@ namespace GUITest
             // Peforms automation tasks/events
             txtAmount.Text = "";
             txtAmount.Enter(input1);
-            chkCountyTax.Click();
+            chkCountyTax.IsChecked = true;
             btnCalculate.Click();
 
             // Pull the result
             var currentItems = lstTotal.Items;
-            var result = currentItems[currentItems.Length - 1];
+            var result = currentItems[currentItems.Length - 1].Name;
 
             // Verify result
             result.Should().Be(expected, because: message);
@@ -132,7 +134,7 @@ namespace GUITest
         }
 
         //may not be in correct order
-        [ClassCleanup]
+        [OneTimeTearDown]
         public void TearMe()
         {
             Automation.Dispose();
