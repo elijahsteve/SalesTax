@@ -24,7 +24,7 @@
             <ListBoxItem x:Name="lbiSalesAmount" Content="Sales Amount: $0.00"/>
             <ListBoxItem x:Name="lbiStateTax" Content="State Tax: $0.00"/>
             <ListBoxItem x:Name="lbiCountyTax" Content="County Tax: $0.00"/>
-            <ListBoxItem x:Name="lbiSalesTotal" Content="Total of Sales Tax: $0.00"/>
+            <ListBoxItem x:Name="lbiTotalTax" Content="Total of Sales Tax: $0.00"/>
             <ListBoxItem x:Name="lbiTotalAmount" Content="Total Amount: $0.00"/>
         </ListBox>
 

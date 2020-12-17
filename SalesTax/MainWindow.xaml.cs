@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static SalesTax.Validator;
+using static SalesTax.Calculate;
 
 namespace SalesTax
 {
@@ -21,28 +22,40 @@ namespace SalesTax
     /// </summary>
     public partial class MainWindow : Window
     {
-        ItemCollection InitialItems;
-
         public MainWindow()
         {
             InitializeComponent();
-            InitialItems = lstTotal.Items;
         }
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            lstTotal.Items.Clear();
-            lstTotal.Items.Add(InitialItems);
+            updateValue(lbiSalesAmount, 0d);
+            updateValue(lbiStateTax, 0d);
+            updateValue(lbiCountyTax, 0d);
+            updateValue(lbiTotalTax, 0d);
+            updateValue(lbiTotalAmount, 0d);
 
-            var isValid = ValidIsNumber(txtAmount.Text, out var outAmount);
+            var isValid = ValidIsNumber(txtAmount.Text, out var amount);
             if (isValid)
             {
+                // variables for the listboxitem inputs
+                var statetaxamount = Calculate.GetStateTax(amount);
+                var counttaxamount = chkCountyTax.IsChecked == true ? Calculate.GetCountyTax(amount) : 0d;
+                var totalsalestax = Calculate.GetTotalSalesTax(amount, chkCountyTax.IsChecked == true);
+                var total = Calculate.GetTotal(amount, chkCountyTax.IsChecked == true);
 
+                // changing the text of the listboxitems
+                updateValue(lbiSalesAmount, amount);
+                updateValue(lbiStateTax, statetaxamount);
+                updateValue(lbiCountyTax, counttaxamount);
+                updateValue(lbiTotalTax, totalsalestax);
+                updateValue(lbiTotalAmount, total);
             }
             else
             {
-
+                txtAmount.Text = "Error";
             }
+            txtAmount.Focus();
         }
     }
 }
