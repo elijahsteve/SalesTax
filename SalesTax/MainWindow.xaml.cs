@@ -24,6 +24,29 @@ namespace SalesTax
     {
         public MainWindow()
         {
+            // Create a GUI named "SalesTax.exe" that will be used to calculate the total dollar amount of a purchase.
+            // This GUI should include a button that will perform all the calculations.
+            // The State Tax amount is 4% & the County Tax is 2%.    
+            // Try to match the created GUI to the provided example GUI as much as possible.
+
+            // In total, the GUI will have the following...
+            // 1 label named "lblSalesAmount"
+            // 1 textbox named "txtAmount"
+            // 1 checkbox named "chkCountyTax"
+            // 1 button named "btnCalculate"
+            // 1 listbox named "lstTotal"
+
+            // the listbox will include the following items...
+            // "lbiSalesAmount"
+            // "lbiStateTax"
+            // "lbiCountyTax"
+            // "lbiTotalTax"
+            // "lbiTotalAmount"
+
+            // The textbox should accept a valid positve number as an input.
+            // If the input is not a valid positive number, the textbox should instead read "Error".
+
+            // WARNING - IF YOU DO NOT NAME THESE OBJECTS EXACTLY AS ABOVE YOU WILL NOT BE ABLE TO PASS THE TESTS
             InitializeComponent();
         }
 
